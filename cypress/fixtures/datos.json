@@ -1,0 +1,14 @@
+{
+  "tareas": {
+      "tarea1": "Tarea uno",
+      "tarea2": "Tarea dos",
+      "tarea3": "Tarea tres",
+      "tarea4": "Tarea cuatro",
+      "tarea5": "guardar"
+
+  },
+  "datos": {
+      "usuario": "Francisco",
+      "password": "cabrera"
+  }
+}
