@@ -10,7 +10,7 @@ module.exports = defineConfig({
     defaultCommandTimeout: 4000
   },
   env: {
-    "usuario": "pushingit",
+    "usuario": "francisco",
     "password": "123456!"
   }
 });

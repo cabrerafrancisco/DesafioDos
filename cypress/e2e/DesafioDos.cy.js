@@ -16,13 +16,12 @@ describe("hooks", () => {
         cy.get('#pass').type(Cypress.env().password)
         cy.get("#submitForm").click();
         cy.get('#todolistlink').click()
-        cy.wait(2000)
-        cy.get('[data-cy="removeAll"]').click();
+        cy.get('[data-cy="removeAll"]').should('be.visible').click();
     })
 
     it('Primer test', () => {
 
-        cy.get('#task').wait(2000).type(tareitas.tarea1)
+        cy.get('#task', {timeout : 2000}).type(tareitas.tarea1)
         cy.get('#sendTask').click()
 
         cy.get('#task').clear()
@@ -38,13 +37,13 @@ describe("hooks", () => {
         cy.get('#sendTask').click()
 
         cy.get('#task').clear()
-        cy.get('#task').wait(2000).type(tareitas.tarea5)
+        cy.get('#task', {timeout : 2000}).type(tareitas.tarea5)
         cy.get('#sendTask').click()
 
     })
 
     it('Segundo test', () => {
-        cy.get('#task').wait(1000);
+        cy.get('#task', {timeout : 1000});
         cy.xpath('//*[@id="all"]').should('exist').and('have.text','All');
         cy.get('#completed').should('exist').and('have.text','Completed');
         cy.xpath("//ul//div//div//div//div//button[@id='active']").should('exist').and('have.text','Active');
@@ -53,14 +52,14 @@ describe("hooks", () => {
     })
 
     it('Tercer test', () => {
-        cy.get('#task').wait(2000).type(tareitas.tarea1)
+        cy.get('#task', {timeout : 2000}).type(tareitas.tarea1)
         cy.get('#sendTask').click()
 
         cy.get('#task').clear()
-        cy.get('#task').wait(2000).type(tareitas.tarea2)
+        cy.get('#task', {timeout : 2000}).type(tareitas.tarea2)
         cy.get('#sendTask').click()
 
-        cy.wait(2000);
+        cy.wait(2000);//uso wait ya que no se puede usar timeout en xpath
         cy.xpath('//*[@id="root"]/div/div[2]/ul/div/div[1]').click();
         cy.wait(3000);
         cy.xpath('//*[@id="root"]/div/div[2]/ul/div/div[2]/li/div').click()
@@ -70,9 +69,10 @@ describe("hooks", () => {
     })
 
     it('Cuarto test', () => {
-        cy.get('#task').wait(2000).type(tareitas.tarea1)
+        cy.get('#task', {timeout : 2000}).type(tareitas.tarea1)
         cy.get('#sendTask').click()
-        cy.get('#task').wait(2000).type(tareitas.tarea2)
+        cy.get('#task').clear()
+        cy.get('#task', {timeout : 2000}).type(tareitas.tarea2)
         cy.get('#sendTask').click()
         cy.wait(3000);
         cy.xpath('//*[@id="root"]/div/div[2]/ul/div/div[1]/li/div/button').click()
@@ -80,7 +80,7 @@ describe("hooks", () => {
 
 
     afterEach(() => {
-        cy.wait(4000)
+        cy.wait(3000);
     })
 
     after(() => {
